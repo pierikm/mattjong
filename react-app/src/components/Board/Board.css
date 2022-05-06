@@ -1,0 +1,8 @@
+.tile-image {
+    max-width: 5rem;
+}
+
+.wall-container {
+    display: grid;
+    grid-template-columns: repeat(17, 6rem);
+}

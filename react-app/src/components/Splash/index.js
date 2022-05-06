@@ -1,10 +1,11 @@
-import TileEle from "../Tile";
+import TileEle from "../TileEle";
+import Board from '../Board';
 
-function Splash(){
+function Splash() {
     return (
         <div>
             <h2>Mattjong</h2>
-            <TileEle />
+            <Board />
         </div>
     )
 }

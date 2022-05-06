@@ -43,18 +43,18 @@ const tiles = {
         'south',
         'west'
     ],
-    seasons: [
-        'autumn',
-        'spring',
-        'summer',
-        'winter'
-    ],
-    flowers: [
-        'bamboo',
-        'mum',
-        'orchid',
-        'plum'
-    ]
+    // seasons: [
+    //     'autumn',
+    //     'spring',
+    //     'summer',
+    //     'winter'
+    // ],
+    // flowers: [
+    //     'bamboo',
+    //     'mum',
+    //     'orchid',
+    //     'plum'
+    // ]
 }
 
 export default tiles;

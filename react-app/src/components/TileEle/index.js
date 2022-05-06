@@ -1,5 +1,5 @@
-import Tile from "./Classes/Tile";
-import Deck from "./Classes/Deck";
+import Tile from "../../Game/Tile";
+import Deck from "../../Game/Deck";
 import './Tile.css';
 import { useState, useEffect } from "react";
 
@@ -15,20 +15,21 @@ function TileEle() {
     }, []);
 
     const shuffle = () => {
-        console.log("shuffle");
         mainDeck.shuffle();
         setDeck(mainDeck.deck);
     }
 
     return (
-        <div className="tiles-container">
-            {deck.map(tile => (
-                <div key={tile.tile}>
-                    <img className="tile-image" alt={tile.tile} src={tile.image}></img>
-                </div>
-            ))}
+        <>
             <button onClick={shuffle}>Shuffle</button>
-        </div>
+            <div className="tiles-container">
+                {deck.map(tile => (
+                    <div key={Math.random() * 1000}>
+                        <img className="tile-image" alt={tile.tile} src={tile.image}></img>
+                    </div>
+                ))}
+            </div>
+        </>
     )
 }
 
