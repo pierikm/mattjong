@@ -1,17 +1,22 @@
-import oneDot from './dots/one-dots.png'
+import Tile from "./Classes/Tile";
+import Deck from "./Classes/Deck";
 
-const tiles = {
-    oneDots:'./dots/one-dots.png',
-    twoDots:''
-}
 
-function Tile() {
+function TileEle() {
+    const oneDot = new Tile('dots', "one-dots");
+    const deck = new Deck();
+
+    console.log(deck.deck);
     return (
         <div>
-            <img alt="tile" src={oneDot} />
-            <div>{tiles.oneDots}</div>
+            {deck.deck.map(tile => (
+                <div key={tile.tile}>
+                    <img alt={tile.tile} src={tile.image}></img>
+                </div>
+            ))}
+            <img alt="tile" src='static/dots/one-dots.png' />
         </div>
     )
 }
 
-export default Tile;
+export default TileEle;
