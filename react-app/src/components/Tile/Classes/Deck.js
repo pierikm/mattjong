@@ -15,6 +15,16 @@ class Deck {
             }
         }
     }
+    shuffle(){
+        let index = this.deck.length;
+        let randIndex;
+
+        while(index){
+            randIndex = Math.floor(Math.random() * index);
+            index--;
+            [this.deck[index], this.deck[randIndex]] = [this.deck[randIndex], this.deck[index]];
+        }
+    }
 }
 
 export default Deck;

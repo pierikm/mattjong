@@ -1,20 +1,33 @@
 import Tile from "./Classes/Tile";
 import Deck from "./Classes/Deck";
-
+import './Tile.css';
+import { useState, useEffect } from "react";
 
 function TileEle() {
+    const [deck, setDeck] = useState([]);
     const oneDot = new Tile('dots', "one-dots");
-    const deck = new Deck();
+    // deck.shuffle();
 
-    console.log(deck.deck);
+    const mainDeck = new Deck();
+
+    useEffect(() => {
+        setDeck(mainDeck.deck)
+    }, []);
+
+    const shuffle = () => {
+        console.log("shuffle");
+        mainDeck.shuffle();
+        setDeck(mainDeck.deck);
+    }
+
     return (
-        <div>
-            {deck.deck.map(tile => (
+        <div className="tiles-container">
+            {deck.map(tile => (
                 <div key={tile.tile}>
-                    <img alt={tile.tile} src={tile.image}></img>
+                    <img className="tile-image" alt={tile.tile} src={tile.image}></img>
                 </div>
             ))}
-            <img alt="tile" src='static/dots/one-dots.png' />
+            <button onClick={shuffle}>Shuffle</button>
         </div>
     )
 }
