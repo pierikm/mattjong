@@ -5,15 +5,36 @@ import tiles from "./data"
 class Deck {
     constructor() {
         this.deck = [];
-        this.northWall = [];
-        this.westWall = [];
-        this.southWall = [];
-        this.eastWall = [];
+        this.northWall = {
+            tiles: [],
+            left: null,
+            right: null,
+            loose: Array(17).fill(null)
+        };
+        this.westWall = {
+            tiles: [],
+            left: null,
+            right: this.northWall,
+            loose: Array(17).fill(null)
+        };
+        this.southWall = {
+            tiles: [],
+            left: null,
+            right: this.westWall,
+            loose: Array(17).fill(null)
+        };
+        this.eastWall = {
+            tiles: [],
+            left: null,
+            right: this.southWall,
+            loose: Array(17).fill(null)
+        };
 
-        this.northLoose = [].fill(null, 0, 16)
-        this.westLoose = [].fill(null, 0, 16)
-        this.southLoose = [].fill(null, 0, 16)
-        this.eastLoose = [].fill(null, 0, 16)
+        this.northWall.left = this.westWall;
+
+        this.westWall.left = this.southWall;
+
+        this.southWall.left = this.eastWall
 
         this.initiate();
     }
@@ -41,10 +62,10 @@ class Deck {
     buildWall() {
         this.shuffle();
         while (this.deck.length) {
-            this.northWall.push(this.deck.pop());
-            this.westWall.push(this.deck.pop());
-            this.southWall.push(this.deck.pop());
-            this.eastWall.push(this.deck.pop());
+            this.northWall.tiles.push(this.deck.pop());
+            this.westWall.tiles.push(this.deck.pop());
+            this.southWall.tiles.push(this.deck.pop());
+            this.eastWall.tiles.push(this.deck.pop());
         }
     }
 
@@ -53,34 +74,31 @@ class Deck {
         const secondRoll = Math.ceil(Math.random() * 6) + Math.ceil(Math.random() * 6);
         const totalRoll = firstRoll + secondRoll;
         const breakPosition = totalRoll > 17 ? (firstRoll + 1) % 4 : firstRoll % 4;
-        let wall;
-        switch (breakPosition) {
-            case 0:
-                console.log('break east wall')
-                wall = this.eastWall;
-                break;
-            case 1:
-                console.log('break south wall')
-                wall = this.southWall;
-                break;
-            case 2:
-                console.log('break west wall')
-                wall = this.westWall;
-                break;
-            case 3:
-                console.log('break north wall')
-                wall = this.northWall;
-                break;
-
+        let wall = this.eastWall;
+        for (let i = 1; i <= breakPosition; i++) {
+            wall = wall.right;
         }
         const indexOne = totalRoll > 17 ? totalRoll % 17 - 1 : totalRoll - 1;
         const indexTwo = indexOne + 17;
-        const looseTiles = [wall[indexOne], wall[indexTwo]];
-        wall[indexOne] = null;
-        wall[indexTwo] = null;
-        console.log(firstRoll, secondRoll, totalRoll, breakPosition, wall);
-        console.log(looseTiles);
+        const looseTiles = [wall.tiles[indexOne], wall.tiles[indexTwo]];
+        wall.tiles[indexOne] = null;
+        wall.tiles[indexTwo] = null;
+        console.log(indexOne, indexTwo, breakPosition, wall);
+        // console.log(looseTiles);
 
+        if (indexOne > 15) {
+            const newWall = wall.right ? wall.right : this.northWall;
+            newWall.loose[indexOne - 17 + 1] = looseTiles[0];
+        } else {
+            wall.loose[indexOne + 1] = looseTiles[0];
+        }
+        if (indexOne > 17) {
+            const newWall = wall.right ? wall.right : this.northWall;
+            newWall.loose[indexOne - 17 + 3] = looseTiles[1];
+        } else {
+            wall.loose[indexOne + 3] = looseTiles[1];
+        }
+        console.log(wall.tiles);
     }
 }
 

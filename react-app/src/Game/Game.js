@@ -25,6 +25,5 @@ class Game {
 
     deal() {
         this.deck.shuffle();
-
     }
 }
