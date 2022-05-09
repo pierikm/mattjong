@@ -8,24 +8,22 @@ function Board() {
     const [loaded, setLoaded] = useState(false);
     // deck.shuffle();
 
-    const mainDeck = new Deck();
 
     useEffect(() => {
-        mainDeck.shuffle();
+        const mainDeck = new Deck();
         mainDeck.buildWall();
-        console.log(mainDeck);
         setDeck(mainDeck)
         setLoaded(true);
     }, []);
 
-    const shuffle = () => {
-        setDeck(mainDeck);
+    const breakWall = () => {
+        deck.breakWall();
     }
 
     if (!loaded) return null;
     return (
         <>
-            <button onClick={shuffle}>Shuffle</button>
+            <button onClick={breakWall}>break wall</button>
             <h3>North Wall</h3>
             <div className="wall-container">
                 {deck.northWall?.map(tile => (

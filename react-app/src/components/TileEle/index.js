@@ -14,14 +14,14 @@ function TileEle() {
         setDeck(mainDeck.deck)
     }, []);
 
-    const shuffle = () => {
-        mainDeck.shuffle();
-        setDeck(mainDeck.deck);
+    const breakWall = () => {
+        mainDeck.breakWall();
+        // setDeck(mainDeck.deck);
     }
 
     return (
         <>
-            <button onClick={shuffle}>Shuffle</button>
+            <button onClick={breakWall}>Break Wall</button>
             <div className="tiles-container">
                 {deck.map(tile => (
                     <div key={Math.random() * 1000}>
