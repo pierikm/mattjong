@@ -1,30 +1,38 @@
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import Tile from "../../Game/Tile";
 import Deck from "../../Game/Deck";
-import { useState, useEffect } from "react";
+import { buildWall, breakWall } from "../../store/game";
 import './Board.css';
 
 function Board() {
-    const [deck, setDeck] = useState(new Deck());
+    // const [deck, setDeck] = useState(new Deck());
     const [loaded, setLoaded] = useState(false);
     // deck.shuffle();
-
+    const deck = useSelector(state => state.game);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const mainDeck = new Deck();
-        mainDeck.buildWall();
-        setDeck(mainDeck)
+        // const mainDeck = new Deck();
+        // mainDeck.buildWall();
+        // setDeck(mainDeck)
         setLoaded(true);
     }, []);
 
-    const breakWall = () => {
-        deck.breakWall();
+    const buildWallBoard = async () => {
         console.log(deck);
+        await dispatch(buildWall());
+    }
+
+    const breakWallBoard = async () => {
+        await dispatch(breakWall());
     }
 
     if (!loaded) return null;
     return (
         <>
-            <button onClick={breakWall}>break wall</button>
+            <button onClick={buildWallBoard}>build wall</button>
+            <button onClick={breakWallBoard}>break wall</button>
             <h3>North Wall</h3>
             <div className="wall-container">
                 {deck.northWall?.loose.map(tile => (

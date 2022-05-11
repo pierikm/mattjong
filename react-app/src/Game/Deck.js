@@ -3,27 +3,27 @@ import tiles from "./data"
 
 
 class Deck {
-    constructor() {
+    constructor(deck, northWall, westWall, southWall, eastWall) {
         this.deck = [];
-        this.northWall = {
+        this.northWall = northWall ? northWall : {
             tiles: [],
             left: null,
             right: null,
             loose: Array(17).fill(null)
         };
-        this.westWall = {
+        this.westWall = westWall ? westWall :{
             tiles: [],
             left: null,
             right: this.northWall,
             loose: Array(17).fill(null)
         };
-        this.southWall = {
+        this.southWall = southWall ? southWall : {
             tiles: [],
             left: null,
             right: this.westWall,
             loose: Array(17).fill(null)
         };
-        this.eastWall = {
+        this.eastWall = eastWall ? eastWall : {
             tiles: [],
             left: null,
             right: this.southWall,
@@ -61,6 +61,7 @@ class Deck {
     }
     buildWall() {
         this.shuffle();
+        console.log("IN DECK CLASS");
         while (this.deck.length) {
             this.northWall.tiles.push(this.deck.pop());
             this.westWall.tiles.push(this.deck.pop());
