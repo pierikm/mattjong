@@ -8,7 +8,7 @@ const load = (deck) => ({
 })
 
 export const loadDeck = () => async dispatch => {
-    const deck = new Deck;
+    const deck = new Deck();
     await dispatch(load(deck))
 }
 
