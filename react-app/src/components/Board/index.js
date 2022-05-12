@@ -41,11 +41,21 @@ function Board() {
         // await dispatch(breakWall());
     }
 
+    const deal = () => {
+        game.deal();
+        console.log(game);
+        setEastWall(game.deck.eastWall);
+        setWestWall(game.deck.westWall);
+        setSouthWall(game.deck.southWall);
+        setNorthWall(game.deck.northWall);
+    }
+
     if (!loaded) return null;
     return (
         <>
             <button onClick={buildWall}>build wall</button>
-            <button onClick={breakWall}>break wall</button>
+            {/* <button onClick={breakWall}>break wall</button> */}
+            <button onClick={deal}>deal</button>
             <h3>East Wall</h3>
             <div className="wall-container">
                 {eastWall.map(tile => (

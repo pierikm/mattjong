@@ -91,7 +91,7 @@ class Deck {
         const firstRoll = Math.ceil(Math.random() * 6) + Math.ceil(Math.random() * 6);
         const secondRoll = Math.ceil(Math.random() * 6) + Math.ceil(Math.random() * 6);
         const totalRoll = firstRoll + secondRoll;
-        let breakPosition = totalRoll > 17 ? (firstRoll + 1) % 4 + 1 : firstRoll % 4;
+        let breakPosition = totalRoll > 17 ? (firstRoll + 1) % 4 : firstRoll % 4;
         breakPosition += Math.pow(-1, breakPosition);
         let startIndex = totalRoll > 17 ? totalRoll % 17 - 1 : totalRoll - 1;
         startIndex += breakPosition * 34;
@@ -111,7 +111,7 @@ class Deck {
         // } else {
         //     wall.loose[indexOne + 3] = looseTiles[1];
         // }
-        return breakPosition;
+        return startIndex;
     }
 }
 

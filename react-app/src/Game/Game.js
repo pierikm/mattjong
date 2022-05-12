@@ -1,6 +1,14 @@
 import Deck from "./Deck";
 import Player from "./Player";
 
+const setIndex = (index) => {
+    if (index === 16) return 34;
+    if (index === 51) return 68;
+    if (index === 85) return 102;
+    if (index === 119) return 0;
+    return index + 1;
+}
+
 class Game {
     constructor(playerOne, playerTwo, playerThree, playerFour) {
         this.deck = new Deck()
@@ -23,8 +31,39 @@ class Game {
     }
 
     deal() {
-        const startIndex = this.deck.breakWall() > 119;
-
+        let index = this.deck.breakWall();
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 2; j++) {
+                this.seating[0].hand.push(this.deck.wall[index])
+                this.seating[0].hand.push(this.deck.wall[index + 17])
+                this.deck.wall[index] = null;
+                this.deck.wall[index + 17] = null;
+                index = setIndex(index);
+            }
+            for (let j = 0; j < 2; j++) {
+                this.seating[1].hand.push(this.deck.wall[index])
+                this.seating[1].hand.push(this.deck.wall[index + 17])
+                this.deck.wall[index] = null;
+                this.deck.wall[index + 17] = null;
+                index = setIndex(index);
+            }
+            for (let j = 0; j < 2; j++) {
+                this.seating[2].hand.push(this.deck.wall[index])
+                this.seating[2].hand.push(this.deck.wall[index + 17])
+                this.deck.wall[index] = null;
+                this.deck.wall[index + 17] = null;
+                index = setIndex(index);
+            }
+            for (let j = 0; j < 2; j++) {
+                this.seating[3].hand.push(this.deck.wall[index])
+                this.seating[3].hand.push(this.deck.wall[index + 17])
+                this.deck.wall[index] = null;
+                this.deck.wall[index + 17] = null;
+                index = setIndex(index);
+            }
+        }
+        this.deck.setWalls();
+        // console.log(this);
     }
 }
 
