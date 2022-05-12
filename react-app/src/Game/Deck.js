@@ -3,10 +3,10 @@ import tiles from "./data"
 
 
 class Deck {
-    constructor(deck, wall, loose) {
+    constructor(deck, wall) {
         this.deck = [];
         this.wall = wall ? wall : [];
-        this.loose = loose ? loose : [];
+        // this.loose = loose ? loose : [];
         this.eastWall = [];
         this.southWall = [];
         this.westWall = [];

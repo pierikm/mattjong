@@ -9,7 +9,6 @@ class Game {
         this.playerThree = new Player(playerThree);
         this.playerFour = new Player(playerFour);
         this.seating = [this.playerOne, this.playerTwo, this.playerThree, this.playerFour];
-        initialSeat();
     }
 
     initalSeat() {
@@ -28,3 +27,5 @@ class Game {
 
     }
 }
+
+export default Game;

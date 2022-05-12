@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import Tile from "../../Game/Tile";
 import Deck from "../../Game/Deck";
+import Game from "../../Game/Game";
 import { buildWall, breakWall } from "../../store/game";
 import './Board.css';
 
@@ -35,11 +36,6 @@ function Board() {
             <button onClick={breakWallBoard}>break wall</button>
             <h3>North Wall</h3>
             <div className="wall-container">
-                {deck.loose.map(tile => (
-                    <div key={Math.random() * 1000}>
-                        {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
-                    </div>
-                ))}
                 {deck.northWall.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
@@ -48,11 +44,6 @@ function Board() {
             </div>
             <h3>West Wall</h3>
             <div className="wall-container">
-                {deck.loose.map(tile => (
-                    <div key={Math.random() * 1000}>
-                        {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
-                    </div>
-                ))}
                 {deck.westWall.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
@@ -61,11 +52,6 @@ function Board() {
             </div>
             <h3>South Wall</h3>
             <div className="wall-container">
-                {deck.loose.map(tile => (
-                    <div key={Math.random() * 1000}>
-                        {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
-                    </div>
-                ))}
                 {deck.southWall.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
@@ -74,11 +60,6 @@ function Board() {
             </div>
             <h3>East Wall</h3>
             <div className="wall-container">
-                {deck.loose.map(tile => (
-                    <div key={Math.random() * 1000}>
-                        {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
-                    </div>
-                ))}
                 {deck.eastWall.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
