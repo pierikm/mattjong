@@ -5,4 +5,5 @@
 .wall-container {
     display: grid;
     grid-template-columns: repeat(17, 6rem);
+    grid-template-rows: repeat(2, 7rem);
 }

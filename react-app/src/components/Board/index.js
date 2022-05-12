@@ -44,10 +44,10 @@ function Board() {
     const deal = () => {
         game.deal();
         console.log(game);
-        setEastWall(game.deck.eastWall);
-        setWestWall(game.deck.westWall);
-        setSouthWall(game.deck.southWall);
-        setNorthWall(game.deck.northWall);
+        setEastWall([...game.deck.eastWall]);
+        setWestWall([...game.deck.westWall]);
+        setSouthWall([...game.deck.southWall]);
+        setNorthWall([...game.deck.northWall]);
     }
 
     if (!loaded) return null;

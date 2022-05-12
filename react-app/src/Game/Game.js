@@ -3,9 +3,9 @@ import Player from "./Player";
 
 const setIndex = (index) => {
     if (index === 16) return 34;
-    if (index === 51) return 68;
-    if (index === 85) return 102;
-    if (index === 119) return 0;
+    if (index === 50) return 68;
+    if (index === 84) return 102;
+    if (index === 118) return 0;
     return index + 1;
 }
 
@@ -62,6 +62,18 @@ class Game {
                 index = setIndex(index);
             }
         }
+        this.seating[0].hand.push(this.deck.wall[index])
+        this.seating[1].hand.push(this.deck.wall[index + 17])
+        this.deck.wall[index] = null;
+        this.deck.wall[index + 17] = null;
+        index = setIndex(index);
+        this.seating[2].hand.push(this.deck.wall[index])
+        this.seating[3].hand.push(this.deck.wall[index + 17])
+        this.deck.wall[index] = null;
+        this.deck.wall[index + 17] = null;
+        index = setIndex(index);
+        this.seating[0].hand.push(this.deck.wall[index])
+        this.deck.wall[index] = null;
         this.deck.setWalls();
         // console.log(this);
     }
