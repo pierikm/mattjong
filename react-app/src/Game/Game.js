@@ -24,6 +24,7 @@ class Game {
     }
 
     deal() {
-        this.deck.shuffle();
+        const dealStart = this.deck.breakWall() - 1;
+
     }
 }

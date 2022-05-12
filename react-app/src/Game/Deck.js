@@ -3,38 +3,44 @@ import tiles from "./data"
 
 
 class Deck {
-    constructor(deck, northWall, westWall, southWall, eastWall) {
+    constructor(deck, wall, loose) {
         this.deck = [];
-        this.northWall = northWall ? northWall : {
-            tiles: [],
-            left: null,
-            right: null,
-            loose: Array(17).fill(null)
-        };
-        this.westWall = westWall ? westWall :{
-            tiles: [],
-            left: null,
-            right: this.northWall,
-            loose: Array(17).fill(null)
-        };
-        this.southWall = southWall ? southWall : {
-            tiles: [],
-            left: null,
-            right: this.westWall,
-            loose: Array(17).fill(null)
-        };
-        this.eastWall = eastWall ? eastWall : {
-            tiles: [],
-            left: null,
-            right: this.southWall,
-            loose: Array(17).fill(null)
-        };
+        this.wall = wall ? wall : [];
+        this.loose = loose ? loose : [];
+        this.eastWall = [];
+        this.southWall = [];
+        this.westWall = [];
+        this.northWall = [];
+        // this.northWall = northWall ? northWall : {
+        //     tiles: [],
+        //     left: null,
+        //     right: null,
+        //     loose: Array(17).fill(null)
+        // };
+        // this.westWall = westWall ? westWall : {
+        //     tiles: [],
+        //     left: null,
+        //     right: this.northWall,
+        //     loose: Array(17).fill(null)
+        // };
+        // this.southWall = southWall ? southWall : {
+        //     tiles: [],
+        //     left: null,
+        //     right: this.westWall,
+        //     loose: Array(17).fill(null)
+        // };
+        // this.eastWall = eastWall ? eastWall : {
+        //     tiles: [],
+        //     left: null,
+        //     right: this.southWall,
+        //     loose: Array(17).fill(null)
+        // };
 
-        this.northWall.left = this.westWall;
+        // this.northWall.left = this.westWall;
 
-        this.westWall.left = this.southWall;
+        // this.westWall.left = this.southWall;
 
-        this.southWall.left = this.eastWall
+        // this.southWall.left = this.eastWall
 
         this.initiate();
     }
@@ -59,15 +65,26 @@ class Deck {
             [this.deck[index], this.deck[randIndex]] = [this.deck[randIndex], this.deck[index]];
         }
     }
+
+    setWalls(){
+        for(let i = 0; i < 34; i++){
+            this.eastWall[i] = this.wall[i];
+            this.southWall[i] = this.wall[i + 34];
+            this.westWall[i] = this.wall[i + 68];
+            this.northWall[i] = this.wall[i + 102];
+        }
+    }
+
     buildWall() {
         this.shuffle();
-        console.log("IN DECK CLASS");
         while (this.deck.length) {
-            this.northWall.tiles.push(this.deck.pop());
-            this.westWall.tiles.push(this.deck.pop());
-            this.southWall.tiles.push(this.deck.pop());
-            this.eastWall.tiles.push(this.deck.pop());
+            // this.northWall.tiles.push(this.deck.pop());
+            // this.westWall.tiles.push(this.deck.pop());
+            // this.southWall.tiles.push(this.deck.pop());
+            // this.eastWall.tiles.push(this.deck.pop());
+            this.wall.push(this.deck.pop())
         }
+        this.setWalls();
     }
 
     breakWall() {
@@ -99,7 +116,7 @@ class Deck {
         } else {
             wall.loose[indexOne + 3] = looseTiles[1];
         }
-        console.log(wall.tiles);
+        return breakPosition;
     }
 }
 

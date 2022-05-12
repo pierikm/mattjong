@@ -20,8 +20,8 @@ function Board() {
     }, []);
 
     const buildWallBoard = async () => {
-        console.log(deck);
         await dispatch(buildWall());
+        console.log(deck);
     }
 
     const breakWallBoard = async () => {
@@ -35,12 +35,12 @@ function Board() {
             <button onClick={breakWallBoard}>break wall</button>
             <h3>North Wall</h3>
             <div className="wall-container">
-                {deck.northWall?.loose.map(tile => (
+                {deck.loose.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
                     </div>
                 ))}
-                {deck.northWall?.tiles.map(tile => (
+                {deck.northWall.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
                     </div>
@@ -48,12 +48,12 @@ function Board() {
             </div>
             <h3>West Wall</h3>
             <div className="wall-container">
-                {deck.westWall?.loose.map(tile => (
+                {deck.loose.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
                     </div>
                 ))}
-                {deck.westWall?.tiles.map(tile => (
+                {deck.westWall.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
                     </div>
@@ -61,12 +61,12 @@ function Board() {
             </div>
             <h3>South Wall</h3>
             <div className="wall-container">
-                {deck.southWall?.loose.map(tile => (
+                {deck.loose.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
                     </div>
                 ))}
-                {deck.southWall?.tiles.map(tile => (
+                {deck.southWall.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
                     </div>
@@ -74,12 +74,12 @@ function Board() {
             </div>
             <h3>East Wall</h3>
             <div className="wall-container">
-                {deck.eastWall?.loose.map(tile => (
+                {deck.loose.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
                     </div>
                 ))}
-                {deck.eastWall?.tiles.map(tile => (
+                {deck.eastWall.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
                     </div>
