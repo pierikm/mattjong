@@ -66,12 +66,12 @@ class Deck {
         }
     }
 
-    setWalls(){
-        for(let i = 0; i < 34; i++){
+    setWalls() {
+        for (let i = 0; i < 34; i++) {
             this.eastWall[i] = this.wall[i];
-            this.southWall[i] = this.wall[i + 34];
+            this.northWall[i] = this.wall[i + 34];
             this.westWall[i] = this.wall[i + 68];
-            this.northWall[i] = this.wall[i + 102];
+            this.southWall[i] = this.wall[i + 102];
         }
     }
 
@@ -91,17 +91,12 @@ class Deck {
         const firstRoll = Math.ceil(Math.random() * 6) + Math.ceil(Math.random() * 6);
         const secondRoll = Math.ceil(Math.random() * 6) + Math.ceil(Math.random() * 6);
         const totalRoll = firstRoll + secondRoll;
-        const breakPosition = totalRoll > 17 ? (firstRoll + 1) % 4 : firstRoll % 4;
-        let wall = this.eastWall;
-        for (let i = 1; i <= breakPosition; i++) {
-            wall = wall.right;
-        }
-        const indexOne = totalRoll > 17 ? totalRoll % 17 - 1 : totalRoll - 1;
-        const indexTwo = indexOne + 17;
-        const looseTiles = [wall.tiles[indexOne], wall.tiles[indexTwo]];
-        wall.tiles[indexOne] = null;
-        wall.tiles[indexTwo] = null;
-        console.log(indexOne, indexTwo, breakPosition, wall);
+        let breakPosition = totalRoll > 17 ? (firstRoll + 1) % 4 + 1 : firstRoll % 4;
+        breakPosition += Math.pow(-1, breakPosition);
+        let startIndex = totalRoll > 17 ? totalRoll % 17 - 1 : totalRoll - 1;
+        startIndex += breakPosition * 34;
+        // const indexTwo = indexOne + 17;
+        console.log(firstRoll, secondRoll, breakPosition, startIndex);
         // console.log(looseTiles);
 
         // if (indexOne > 15) {

@@ -23,7 +23,7 @@ class Game {
     }
 
     deal() {
-        const dealStart = this.deck.breakWall() - 1;
+        const startIndex = this.deck.breakWall() > 119;
 
     }
 }

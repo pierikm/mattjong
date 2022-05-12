@@ -37,6 +37,7 @@ function Board() {
     }
 
     const breakWall = async () => {
+        game.deal();
         // await dispatch(breakWall());
     }
 
@@ -45,6 +46,14 @@ function Board() {
         <>
             <button onClick={buildWall}>build wall</button>
             <button onClick={breakWall}>break wall</button>
+            <h3>East Wall</h3>
+            <div className="wall-container">
+                {eastWall.map(tile => (
+                    <div key={Math.random() * 1000}>
+                        {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
+                    </div>
+                ))}
+            </div>
             <h3>North Wall</h3>
             <div className="wall-container">
                 {northWall.map(tile => (
@@ -64,14 +73,6 @@ function Board() {
             <h3>South Wall</h3>
             <div className="wall-container">
                 {southWall.map(tile => (
-                    <div key={Math.random() * 1000}>
-                        {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
-                    </div>
-                ))}
-            </div>
-            <h3>East Wall</h3>
-            <div className="wall-container">
-                {eastWall.map(tile => (
                     <div key={Math.random() * 1000}>
                         {tile && <img className="tile-image" alt={tile.tile} src={tile.image}></img>}
                     </div>
