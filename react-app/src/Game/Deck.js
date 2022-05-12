@@ -104,18 +104,18 @@ class Deck {
         console.log(indexOne, indexTwo, breakPosition, wall);
         // console.log(looseTiles);
 
-        if (indexOne > 15) {
-            const newWall = wall.right ? wall.right : this.northWall;
-            newWall.loose[indexOne - 17 + 1] = looseTiles[0];
-        } else {
-            wall.loose[indexOne + 1] = looseTiles[0];
-        }
-        if (indexOne > 17) {
-            const newWall = wall.right ? wall.right : this.northWall;
-            newWall.loose[indexOne - 17 + 3] = looseTiles[1];
-        } else {
-            wall.loose[indexOne + 3] = looseTiles[1];
-        }
+        // if (indexOne > 15) {
+        //     const newWall = wall.right ? wall.right : this.northWall;
+        //     newWall.loose[indexOne - 17 + 1] = looseTiles[0];
+        // } else {
+        //     wall.loose[indexOne + 1] = looseTiles[0];
+        // }
+        // if (indexOne > 17) {
+        //     const newWall = wall.right ? wall.right : this.northWall;
+        //     newWall.loose[indexOne - 17 + 3] = looseTiles[1];
+        // } else {
+        //     wall.loose[indexOne + 3] = looseTiles[1];
+        // }
         return breakPosition;
     }
 }

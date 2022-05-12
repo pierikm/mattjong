@@ -7,13 +7,13 @@ import './App.css';
 
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async () => {
-      await dispatch(loadDeck())
-    })();
-  }, [dispatch]);
+  // useEffect(() => {
+  //   (async () => {
+  //     await dispatch(loadDeck())
+  //   })();
+  // }, [dispatch]);
 
   return (
     <BrowserRouter>
