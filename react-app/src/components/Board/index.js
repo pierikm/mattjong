@@ -50,7 +50,7 @@ function Board() {
     const deal = () => {
         game.deal();
         console.log(game);
-        setDeck(game.deck)
+        setDeck({ ...game.deck })
         // setEastWall([...game.deck.eastWall]);
         // setWestWall([...game.deck.westWall]);
         // setSouthWall([...game.deck.southWall]);
