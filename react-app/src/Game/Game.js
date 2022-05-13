@@ -75,7 +75,6 @@ class Game {
         this.seating[0].hand.push(this.deck.wall[index])
         this.deck.wall[index] = null;
         this.deck.setWalls();
-        // console.log(this);
     }
 }
 
